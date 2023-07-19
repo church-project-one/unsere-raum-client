@@ -73,7 +73,6 @@ function AddActivityCard({roomId}) {
         />
 
         <button type="submit">Create Activity</button>
-        <button>Delete Activity</button>
       </form>
     </div>
   );

@@ -7,21 +7,21 @@ function NavBar() {
 
   return(
     <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/rooms" >Rooms</Link>
-
+      <nav>        
+        <Link to="/feeds">Feeds</Link>
         {!isLoggedIn && (
         <>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/login">Login</Link>
+          <Link to="/">Home</Link>
+          <Link to="/signup">Sign Up</Link>
+          <Link to="/login">Login</Link>
         </>
       )}
 
       {isLoggedIn && (
         <>
-          <Link onClick={logOutUser}>Log Out</Link>
           <Link to="/create-room">New Room</Link>
+          <Link to="/rooms" >Rooms</Link>
+          <Link onClick={logOutUser}>Log Out</Link>
         </>
       )}
       </nav>

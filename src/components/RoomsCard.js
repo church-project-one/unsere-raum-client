@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AddActivityCard from "./AddActivityCard";
 import { useState } from "react";
+import EditActivityCard from "./EditActivityCard";
 
 function RoomsCard({ title, activities, _id }) {
   
@@ -46,8 +47,10 @@ function RoomsCard({ title, activities, _id }) {
       {showAddActivityCard 
         ? <div>
             <AddActivityCard roomId={_id}/>
-            <button onClick={hiddenAddActivityCard}>Cancel</button>
-        </div> : <></>}
+            <button onClick={hiddenAddActivityCard} className="cancel-add-activity-button">Cancel</button>
+          </div> 
+        : <></>
+      }
       <Link to={`/rooms/${_id}`}>Details</Link>
     </div>
   );

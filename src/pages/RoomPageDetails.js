@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import EditRoomCard from "../components/EditRoomCard";
+import AddActivityCard from "../components/AddActivityCard";
 
 function RoomPageDetails() {
 
@@ -10,9 +11,10 @@ function RoomPageDetails() {
   const navigate = useNavigate();
   const {roomId} = useParams();
 
-  const [rooms, setRooms] = useState("");
+  const [room, setRoom] = useState("");
   const [activities, setActitivities] = useState([]);
   const [displayUpdateForm, setDisplayUpdateForm] = useState("");
+  const [displayAddActivity, setDisplayAddActivity] = useState(false);
 
   const displayUpdateFormHandle = () => {
     setDisplayUpdateForm(true);
@@ -25,7 +27,7 @@ function RoomPageDetails() {
   const fetchTheRoomDetails = () => {
     axios.get(`${API_URL}/api/rooms/${roomId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then(response => {
-        setRooms(response.data.title)
+        setRoom(response.data.title);
         setActitivities(response.data.activities);
       })
       .catch(e => console.log("failed to fetch the room details", e))
@@ -37,13 +39,21 @@ function RoomPageDetails() {
       .catch(e => console.log("failed to delete", e));
   };
 
+  const displayAddActivityForm = () => {
+    setDisplayAddActivity(true)
+  };
+
+  const hiddenDisplayAddActivityForm = () => {
+    setDisplayAddActivity(false)
+  };
+
   useEffect(() => {
     fetchTheRoomDetails();
   }, []);
 
   return (
     <div className="room-details-container">
-      <h1>{rooms}'s Room</h1>
+      <h1>{room}'s Room</h1>
       <table>
         <thead>
           <tr>
@@ -52,22 +62,23 @@ function RoomPageDetails() {
             <th>Hour</th>
             <th>Activity</th>
             <th>Leader</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {activities.map((element, index) => (
             <tr key={index}>
-              <th>{index + 1}</th>
-              <th>{new Date(element.date).toLocaleDateString("en", {day: "2-digit", month: "long", year: "numeric"})}</th>
-              <th>{element.hour}</th>
-              <th>{element.activity}</th>
-              <th>{element.leader}</th>
+              <td>{index + 1}</td>
+              <td>{new Date(element.date).toLocaleDateString("en", {day: "2-digit", month: "long", year: "numeric"})}</td>
+              <td>{element.hour}</td>
+              <td>{element.activity}</td>
+              <td>{element.leader}</td>
+              <td><Link to={`/activities/${element._id}`}>Details Activity</Link></td>
             </tr>
           ))}
         </tbody>
       </table>
-      
-      <button onClick={displayUpdateFormHandle}>Update Form</button>
+      <button onClick={displayUpdateFormHandle}>Update Class</button>
       {displayUpdateForm 
         ? <div className="edit-room-card">
             <EditRoomCard />
@@ -76,6 +87,13 @@ function RoomPageDetails() {
         : <></>
       }
 
+      <button onClick={displayAddActivityForm}>Add Activity</button>
+      {displayAddActivity 
+        && <div className="add-activity-from-room-page-details">
+              <AddActivityCard />
+              <button onClick={hiddenDisplayAddActivityForm}>Cancel</button> 
+            </div>
+      }    
       <button onClick={deleteRoomHandle}>Delete Room</button>
     </div>
   )

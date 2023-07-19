@@ -3,18 +3,24 @@ nav {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  font-size: x-large;
-  color: white;
-  background-color: blanchedalmond;
+  background-color: rgb(138, 90, 163);
   height: 40px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  font-size: x-large;
+  opacity: 0.8;
 }
 
 nav a:hover {
-  font-weight: bold;
+opacity: 1;
 }
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 .home-page h1 {
@@ -31,6 +37,14 @@ a {
 .sub-rooms-card {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.sub-rooms-card a {
+  color: black;
+}
+
+.sub-rooms-card a:hover {
+  font-weight: bold;
 }
 
 .sub-rooms-card h1 {
@@ -52,11 +66,26 @@ td {
   justify-content: center;
 }
 
+.new-room button {
+  border-radius: 10px;
+}
+
+.new-room button:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .new-room input {
   margin-bottom: 10px;
   border-radius: 10px;
   text-align: center;
   padding: 5px;
+  width: 200px;
+}
+
+.new-room input:hover {
+  transition: 0.5s ease-in-out;
+  width: 300px;
 }
 
 .add-activity-form {
@@ -75,11 +104,17 @@ td {
 .add-activity-form button {
   margin-top: 10px;
   border-radius: 10px;
-  margin-bottom: 10px;
-  height: 40px;
-  padding: 5px;
+  margin-bottom: 5px;
+  height: 35px;
   font-size: 15px;
   cursor: pointer;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-activity-form button:hover {
+  font-weight: bold;
 }
 
 .login-signup-div {
@@ -128,6 +163,10 @@ td {
   justify-content: center;
 }
 
+.room-details-container button {
+  margin-top: 10px;
+}
+
 .form-edit-room-container form {
   display: flex;
   flex-wrap: wrap;
@@ -148,3 +187,29 @@ td {
   justify-content: center;
 }
 
+.cancel-add-activity-button {
+  height: 20px;
+  cursor: pointer;
+}
+
+.cancel-add-activity-button:hover {
+  font-weight: bold;
+}
+
+.add-activity-from-room-page-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.add-activity-from-room-page-details button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+/* table thead {
+  filter: blur(5px);
+} */

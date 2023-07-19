@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RoomsCard from "../components/RoomsCard";
-import { Link } from "react-router-dom";
-import RoomPageDetails from "./RoomPageDetails";
+import { AuthContext } from "../context/auth.context";
 
 function RoomsPage() {
+  const {user} = useContext(AuthContext);
+
   const API_URL = "http://localhost:5005";
   const[rooms, setRooms] = useState([]);
 
@@ -15,22 +16,24 @@ function RoomsPage() {
         axios.get(`${API_URL}/api/rooms`, {headers: {Authorization: `Bearer ${storedToken}`}} )
           .then(response => {
             setRooms(response.data);
-            console.log(response.data)
           })
           .catch(e => console.log("failed to get the rooms", e));
       };
 
       fetchingTheRooms();
     }, [])
-    
-    if(rooms === undefined) {
-      <p>Loading...</p>
+
+    if(!user) {
+      return <p>Loading...</p>
     } else {
+      const userRooms = rooms.filter(room => room.roomOwner._id === user._id)
       return(
         <div>
           <div className="rooms-card">
-            {rooms.map(room => (
-              <RoomsCard key={room._id} {...room} activities={room.activities}/>
+            {userRooms.map(room => (
+              <div key={room._id}>
+                <RoomsCard key={room._id} {...room} activities={room.activities}/>
+              </div>
             ))}
           </div>
         </div>
