@@ -23,8 +23,6 @@ function AddActivityCard({roomId}) {
       roomId
     }
 
-    console.log(newActivity);
-
     axios.post(`${API_URL}/api/rooms/${roomId}/activities`, newActivity, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
         window.location.reload();

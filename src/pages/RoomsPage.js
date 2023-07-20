@@ -8,21 +8,30 @@ function RoomsPage() {
 
   const API_URL = "http://localhost:5005";
   const[rooms, setRooms] = useState([]);
+  const [partners, setPartners] = useState("");
 
   const storedToken = localStorage.getItem("authToken")
 
-    useEffect(() => {
-      const fetchingTheRooms = () => {
-        axios.get(`${API_URL}/api/rooms`, {headers: {Authorization: `Bearer ${storedToken}`}} )
-          .then(response => {
-            setRooms(response.data);
-          })
-          .catch(e => console.log("failed to get the rooms", e));
-      };
+  const fetchingTheRooms = () => {
+    axios.get(`${API_URL}/api/rooms`, {headers: {Authorization: `Bearer ${storedToken}`}} )
+      .then(response => {
+        setRooms(response.data);
+      })
+      .catch(e => console.log("failed to get the rooms", e));
+  };
 
+  const fetchMyPartners = () => {
+    axios.get(`${API_URL}/api/partners`, {headers: {Authorization: `Bearer ${storedToken}`}})
+      .then(response => setPartners(response.data.map(element => element.partner)))
+      .catch(e => console.log("error to fetch the partners", e))
+  };
+
+    useEffect(() => {
       fetchingTheRooms();
+      fetchMyPartners();
     }, [])
 
+  
     if(!user) {
       return <p>Loading...</p>
     } else {

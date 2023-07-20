@@ -10,7 +10,6 @@ import RoomPageDetails from './pages/RoomPageDetails';
 import EditActivityCard from './components/EditActivityCard';
 import FeedsPage from './pages/FeedsPage';
 
-
 function App() {
   return (
     <div className="App">
