@@ -21,6 +21,7 @@ function AddPartnerCard({roomId}) {
         console.log(response.data)
         setPartner("")
         alert("success to add")
+        window.location.reload();
       })
       .catch(e => {
         console.log("error to post the new partner", e);

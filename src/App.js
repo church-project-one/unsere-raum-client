@@ -9,6 +9,10 @@ import AddRoomCard from './components/AddRoomCard';
 import RoomPageDetails from './pages/RoomPageDetails';
 import EditActivityCard from './components/EditActivityCard';
 import FeedsPage from './pages/FeedsPage';
+import MyHomePage from './pages/MyHomePage';
+import ProfilePage from './pages/ProfilePage';
+import FeedDetailsPage from './pages/FeedDetailsPage';
+import AddFeedCard from './components/AddFeedCard';
 
 function App() {
   return (
@@ -24,7 +28,12 @@ function App() {
         <Route path="/rooms/:roomId" element={<RoomPageDetails />}/>
         <Route path="/activities/:activityId" element={<EditActivityCard />} />
         <Route path="/feeds" element={<FeedsPage/>}/>
+        <Route path="/myhome" element={<MyHomePage/>}/>
+        <Route path="/profile/:profileId" element={<ProfilePage/>}/>
+        <Route path="/feeds/:feedId" element={<FeedDetailsPage/>}/>
+        <Route path="feeds/add" element={<AddFeedCard />}/>
       </Routes>
+      
     </div>
   );
 }

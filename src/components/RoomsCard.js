@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import AddActivityCard from "./AddActivityCard";
 import { useState } from "react";
-import EditActivityCard from "./EditActivityCard";
 
 function RoomsCard({ title, activities, _id }) {
   
@@ -20,26 +19,22 @@ function RoomsCard({ title, activities, _id }) {
       <h1>{title}</h1>
       <div className="add-new-activity-div">
         <span style={{cursor: "pointer"}} onClick={displayAddActivityCard} className="add-new-activity-sign">+</span>
-        <span className="add-new-activity-text">Add new activity</span>
+        <span className="add-new-activity-text">Add to do list</span>
       </div>
       <table>
         <thead>
           <tr>
             <th>No.</th>
-            <th>Date</th>
-            <th>Hour</th>
-            <th>Activity</th>
-            <th>Leader</th>
+            <th>To do list</th>
+            <th>Remark</th>
           </tr>
         </thead>
         <tbody>
           {activities.map((element, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{new Date(element.date).toLocaleDateString("en", {day: "2-digit", month: "long", year: "numeric"})}</td>
-              <td>{element.hour}</td>
               <td>{element.activity}</td>
-              <td>{element.leader}</td>
+              <td>Complete</td>
             </tr>
           ))}
         </tbody>

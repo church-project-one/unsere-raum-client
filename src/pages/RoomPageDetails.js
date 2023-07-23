@@ -18,7 +18,7 @@ function RoomPageDetails() {
   const [activities, setActitivities] = useState([]);
   const [displayUpdateForm, setDisplayUpdateForm] = useState("");
   const [displayAddActivity, setDisplayAddActivity] = useState(false);
-  const [partners, setPartners] = useState("");
+  const [partners, setPartners] = useState([]);
 
 
   const displayUpdateFormHandle = () => {
@@ -40,7 +40,7 @@ function RoomPageDetails() {
 
   const fetchMyPartners = () => {
     axios.get(`${API_URL}/api/partners`, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then(response => setPartners(response.data.map(element => element.partner)))
+      .then(response => setPartners(response.data))
       .catch(e => console.log("error to fetch the partners", e))
   };
 
@@ -70,21 +70,14 @@ function RoomPageDetails() {
         <thead>
           <tr>
             <th>No.</th>
-            <th>Date</th>
-            <th>Hour</th>
-            <th>Activity</th>
-            <th>Leader</th>
-            <th>Action</th>
+            <th>To do List</th>
           </tr>
         </thead>
         <tbody>
           {activities.map((element, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{new Date(element.date).toLocaleDateString("en", {day: "2-digit", month: "long", year: "numeric"})}</td>
-              <td>{element.hour}</td>
               <td>{element.activity}</td>
-              <td>{element.leader}</td>
               <td><Link to={`/activities/${element._id}`}>Details Activity</Link></td>
             </tr>
           ))}
@@ -105,21 +98,23 @@ function RoomPageDetails() {
               <AddActivityCard />
               <button onClick={hiddenDisplayAddActivityForm}>Cancel</button> 
             </div>
-      }
-      <AddPartnerCard roomId={roomId}/>    
+      } 
       <button onClick={deleteRoomHandle}>Delete Room</button>
-      {}
       <div>
         <table>
           <thead>
             <tr>
+              <th>No.</th>
               <th>My Partners</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{partners}</td>
-            </tr>
+          {partners.map((element, index) => (
+          <tr key={element._id}>
+            <td>{index + 1}</td>
+            <td>{element.partner}</td>
+          </tr>
+          ))}
           </tbody>
         </table>
       </div>

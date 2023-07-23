@@ -24,7 +24,7 @@ function LoginPage() {
       .then(response => {
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/rooms")
+        navigate("/feeds")
       })
       .catch(e => {
         console.log("failed to login", e);
