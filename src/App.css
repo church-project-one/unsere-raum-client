@@ -1,9 +1,6 @@
 nav {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: end;
+  justify-content: center;
   background-color: rgba(198, 195, 204, 0.687);
   height: 40px;
   font-family: Arial, Helvetica, sans-serif;
@@ -12,6 +9,23 @@ nav {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
+
+#hamburger-menu {
+  position: absolute;
+  top: 1.2em;
+  right: 2em;
+  display: none ;
+}
+
+.span-hamburger {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: #333; /* Adjust color as needed */
+  margin: 6px auto;
+  transition: transform 0.3s ease;
+}
+
 
 nav a {
   color: rgb(12, 11, 11);
@@ -234,6 +248,7 @@ td {
   flex-wrap: wrap;
   width: 700px;
   max-width: 800px;
+  margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
@@ -356,6 +371,13 @@ table tbody tr td {
   transition: 0.5s;
 }
 
+#blur-all-feed {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
 #blur-all-feeds.active {
   filter: blur(1px);
   z-index: 0;
@@ -443,12 +465,15 @@ table tbody tr td {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #add-feed-container {
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 #add-feed-container.active {
@@ -458,22 +483,26 @@ table tbody tr td {
 
 #add-feed {
   display: flex;
-  width: 700px;
+  flex-wrap: wrap;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
 #add-feed img {
+  display: flex;
+  flex-wrap: wrap;
   width: 35px;
   border-radius: 50%;
   padding: 10px 10px 10px 10px;
 }
 
 #add-feed input {
+  display: flex;
   border-top: none;
   border-right: none;
   border-left: none;
   width: 620px;
+  padding: 10px 10px 10px 10px;
 }
 
 #add-feed-container #publish-button-container {
@@ -516,4 +545,63 @@ table tbody tr td {
   opacity: 1;
   transition: 0.5s;
   z-index: 1000;
+}
+
+#menu-button {
+  display: none;
+}
+
+#input-hamburger-menu {
+  display: none;
+  visibility: hidden;
+}
+
+@media (width < 735px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    box-shadow: none;
+    background-color: white;
+    align-items: center;
+    justify-content: start;
+    height: 150px;
+    display: none;
+  }
+
+  #navbar.active {
+    display: flex;
+  }
+
+  #hamburger-menu {
+    display: block;
+    cursor: pointer;
+    transition: left 0.5s ease-out;
+  }
+  
+  #add-feed-container {
+    margin-top: 4em;
+  }
+
+
+  #hamburger-menu.active .top-span {
+    transform: rotate(45deg) translateY(15px);
+  }
+  
+  #hamburger-menu.active .middle-span {
+    display: none;
+  }
+  
+  #hamburger-menu.active .bottom-span {
+    transform: rotate(-45deg) translateY(-15px) translateX(-1px);
+  }
+  
+  #add-feed input {
+    display: flex;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 400px;
+
+  }
 }
