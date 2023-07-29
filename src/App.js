@@ -3,7 +3,6 @@ import {Routes, Route} from "react-router-dom";
 import RoomsPage from './pages/RoomsPage';
 import SignUp from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
-import HomePage from './pages/HomePage';
 import NavBar from './components/NavBar';
 import AddRoomCard from './components/AddRoomCard';
 import RoomPageDetails from './pages/RoomPageDetails';
@@ -12,7 +11,7 @@ import FeedsPage from './pages/FeedsPage';
 import MyHomePage from './pages/MyHomePage';
 import ProfilePage from './pages/ProfilePage';
 import FeedDetailsPage from './pages/FeedDetailsPage';
-import AddFeedCard from './components/AddFeedCard';
+import EditResponsePage from './pages/EditResponsePage';
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
       <NavBar />
 
       <Routes>
-        <Route path="/" element={<HomePage/>}/>
         <Route path="/rooms" element={<RoomsPage/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<LoginPage/>}/>
@@ -31,7 +29,7 @@ function App() {
         <Route path="/myhome" element={<MyHomePage/>}/>
         <Route path="/profile/:profileId" element={<ProfilePage/>}/>
         <Route path="/feeds/:feedId" element={<FeedDetailsPage/>}/>
-        <Route path="feeds/add" element={<AddFeedCard />}/>
+        <Route path="response/:responseId" element={<EditResponsePage />}/>
       </Routes>
       
     </div>

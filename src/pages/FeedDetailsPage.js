@@ -12,7 +12,7 @@ function FeedDetailsPage() {
   const navigate = useNavigate();
 
   const fetchFeedDetails = () => {
-    axios.get(`${API_URL}/api/feeds/${feedId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
+    axios.get(`${API_URL}/api/feeds/${feedId}`)
       .then(response => {
         setFeedDetails(response.data)
       })

@@ -32,7 +32,7 @@ function AddFeedCard() {
 
     uploadImage(uploadDataImage)
       .then(response => setPicture(response.picture))
-      .catch(e => console.log("error to add an image file", e));
+      .catch(e => console.log("error to adding an image file", e));
   };
 
   const addNewFeed = (e) => {
