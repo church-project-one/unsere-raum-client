@@ -15,7 +15,7 @@ function NavBar() {
 
   return(
       <header>
-        <Link to="#">ZendDae</Link>
+        <Link to="/">ZendDae</Link>
 
         <div className="hamburger-menu" onClick={toggleHamburgerMenu}>
           <span className="hamburger-icon top-line"></span>
@@ -25,7 +25,7 @@ function NavBar() {
 
         <nav className="navbar">
           <ul>
-            <li><Link to="/feeds">Feeds</Link></li>
+            {/* <li><Link to="/feeds">Feeds</Link></li> */}
             {!isLoggedIn && (
               <>
                 <li><Link to="/signup">Sign Up</Link></li>
@@ -36,7 +36,7 @@ function NavBar() {
             {isLoggedIn && (
               <>
               <li><Link to="/myhome">My Home</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
+                <li><Link to={`/profile/${user._id}`}>Profile</Link></li>
                 <li><Link onClick={logOutUser}>Log Out</Link></li>
               </>
             )}

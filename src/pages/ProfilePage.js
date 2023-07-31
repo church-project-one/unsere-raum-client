@@ -18,6 +18,8 @@ function ProfilePage() {
   useEffect(() => {
     fetchProfile();
   }, []);
+
+  console.log(profile)
   
   return(
     <div id="profile">

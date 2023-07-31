@@ -42,11 +42,9 @@ function RoomsPage() {
     } else {
       const userRooms = rooms.filter(room => room.roomOwner._id === user._id)
       return(
-        <div>
-          <div className="new-room-nav-container">
-            <Link to="/create-room">+ New Room</Link>
-          </div>
-          
+        <div className="rooms-page">
+          <Link to="/create-room">+ New Room</Link>
+
           <div className="rooms-card">
             {userRooms.map(room => (
               <div key={room._id}>

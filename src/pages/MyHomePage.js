@@ -4,9 +4,7 @@ function MyHomePage () {
 
   return(
     <div className="myhome-page">
-      <div className="myhome-page-navbar">
         <Link to="/rooms">My Room</Link>
-      </div>
     </div>
   )
 };

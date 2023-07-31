@@ -32,7 +32,7 @@ function EditRoomCard() {
     axios.put(`${API_URL}/api/rooms/${roomId}`, updateRoom, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then(() => {
         alert("you have succeeded updating the room");
-        navigate(-1)
+        window.location.reload();
       })
       .catch(e => console.log("failed to update", e))
   }

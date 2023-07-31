@@ -50,14 +50,6 @@ function RoomPageDetails() {
       .catch(e => console.log("failed to delete", e));
   };
 
-  const displayAddActivityForm = () => {
-    setDisplayAddActivity(true)
-  };
-
-  const hiddenDisplayAddActivityForm = () => {
-    setDisplayAddActivity(false)
-  };
-
   useEffect(() => {
     fetchTheRoomDetails();
     fetchMyPartners();
@@ -78,7 +70,7 @@ function RoomPageDetails() {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{element.activity}</td>
-              <td><Link to={`/activities/${element._id}`}>Details Activity</Link></td>
+              <td><Link to={`/activities/${element._id}`}>Details</Link></td>
             </tr>
           ))}
         </tbody>
@@ -91,14 +83,6 @@ function RoomPageDetails() {
           </div>
         : <></>
       }
-
-      <button onClick={displayAddActivityForm}>Add Activity</button>
-      {displayAddActivity 
-        && <div className="add-activity-from-room-page-details">
-              <AddActivityCard />
-              <button onClick={hiddenDisplayAddActivityForm}>Cancel</button> 
-            </div>
-      } 
       <button onClick={deleteRoomHandle}>Delete Room</button>
       <div>
         <table>

@@ -9,29 +9,22 @@ function EditActivityCard() {
 
   const {activityId} = useParams();
   const[date, setDate] = useState("");
-  const[hour, setHour] = useState("");
   const[activity, setActivity] = useState("");
-  const[leader, setLeader] = useState("");
+
+  console.log(activityId)
 
   const fetchOneActivity = () => {
     axios.get(`${API_URL}/api/activities/${activityId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
-        const formattedDate = response.data.date.substring(0, 10);
-        setDate(formattedDate);
-        setHour(response.data.hour);
+        console.log(response.data)
+        setDate(response.data)
         setActivity(response.data.activity);
-        setLeader(response.data.leader);
       })
       .catch(e => console.log("failed to fetch the activity id", e))
   };
 
   const updateActivityHandle = () => {
-    const updateActivityBody = {
-      date,
-      hour,
-      activity,
-      leader
-    }
+    const updateActivityBody = { activity }
 
     axios.put(`${API_URL}/api/activities/${activityId}`, updateActivityBody, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then(() => {
@@ -54,23 +47,10 @@ function EditActivityCard() {
   }, [])
 
   return(
-    <div>
+    <div id="update-activity-form">
         <form onSubmit={updateActivityHandle}>
-        <label>Date</label>
-        <input 
-          type="date"
-          name="date"
-          value={date}
-          onChange={e => setDate(e.target.value)}
-        />
-
-        <label>Hour</label>
-        <input 
-          type="text"
-          name="hour"
-          value={hour}
-          onChange={e => setHour(e.target.value)}
-        />
+        <label>Created At</label>
+        <p>{new Date(date.createdAt).toDateString("en", {day: "2-digit", month: "long", year: "numeric"})}</p>
 
         <label>Activity</label>
         <input 
@@ -79,15 +59,6 @@ function EditActivityCard() {
           value={activity}
           onChange={e => setActivity(e.target.value)}
         />
-
-        <label>Leader</label>
-        <input 
-          type="text"
-          name="leader"
-          value={leader}
-          onChange={e => setLeader(e.target.value)}
-        />
-
         <button type="submit">Update</button>
       </form>
       <button onClick={deleteActivityHandle}>Delete Activity</button>

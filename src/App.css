@@ -62,6 +62,10 @@ div.hamburger-menu .hamburger-icon {
 
 
 /* Room Card styling */
+.rooms-page {
+  margin-top: 4em;
+}
+
 
 .rooms-card {
   display: flex;
@@ -133,6 +137,7 @@ td {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-top: 4em;
 }
 
 .room-details-container button {
@@ -159,15 +164,27 @@ td {
   justify-content: center;
 }
 
-.new-room-nav-container {
-  width: 100px;
+.edit-feed-form {
+  display: none;
+}
+
+.edit-feed-form.active {
+  display: initial;
+}
+
+/* HomePage */
+
+#home-page {
+  margin-top: 5em;
+}
+
+
+/* Myhome Page styling */
+
+.myhome-page {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 10px 10px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin-top: 5em;
 }
 
 /* Activity styling */
@@ -242,6 +259,7 @@ td {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 .login-signup-div form input {
@@ -254,6 +272,8 @@ td {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 80px;
+  height: 20px;
 }
 
 .login-signup-div form button:hover {
@@ -265,255 +285,11 @@ td {
   color: rgb(54, 54, 185);
 }
 
-/* Feeds styling */
-
-
-.feeds-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 700px;
-  max-width: 800px;
-  margin-top: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  border-radius: 20px;
-}
-
-.feel-free {
-  margin-top: 4em;
-}
-
-.picture-and-name {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: start;
-  margin: 0;
-}
-
-.feed-picture {
-  width: 600px;
-  height: 400px;
-  padding-top: 5px;
-}
-
-.profile-img-in-feed {
-  width: 35px;
-  border-radius: 50%;
-}
-
-.feeds-container div {
-  margin: 10px 0 5px 10px;
-}
-
-.feeds-description {
-  margin: 0;
-}
-
-.feed-price {
-  margin: 0;
-}
-
-.feed-name {
-  margin-right: 10px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-
-#responses-inside-feed {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-left: -20px;
-}
-
-.sub-responses-inside-feed {
-  display: flex;
-  margin: 0;
-  flex-wrap: wrap;
-}
-
-.response-description-of-feed {
-  margin-top: 0;
-}
-
-.response-feed-name {
-  margin: 0;
-}
-
-.response-description-in-feed {
-  margin: 0;
-  padding: 0;
-}
-
-#popup-add-response {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  padding: 50px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 30);
-  background: #fff;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.5s;
-}
-
-#blur-all-feed {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-
-#blur-all-feeds.active {
-  filter: blur(1px);
-  z-index: 0;
-}
-
-#popup-add-response.active {
-  top: 50%;
-  visibility: visible;
-  opacity: 1;
-  transition: 0.5s;
-  z-index: 1000;
-}
-
-.feeds-container div#comment-interested {
-  margin-left: 0;
-}
-
-.feeds-container div#comment-interested img {
-  margin-left: 0;
-  margin-right: 1.5em;
-  width: 30px;
-  cursor: pointer;
-}
-
-#feed-details-page {
-  display: flex;
-  margin: 4em 4em 0 4em;
-}
-
-#feed-details-page img {
-  width: 450px;
-}
-
-#feed-details-page #feed-details-description {
-  margin-left: 4em;
-  border-left: 2px solid black;
-  padding-left: 2em;
-  width: 700px;
-}
-
-#feed-details-description p, #feed-details-description h2 {
-  margin: 0;
-  padding: 0 0 0.5em 0 ;
-}
-
-#feed-details-description h2 {
-  border-bottom: 2px solid black;
-}
-
-#feed-details-description p {
-  padding-top: 0.5em;
-}
-
-#main-feeds-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-#add-feed-container {
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  margin: 2em;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 5em;
-  flex-direction: column;
-}
-
-#add-feed-container.active {
-  filter: blur(1px);
-  z-index: 0;
-}
-
-#add-feed {
-  display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-
-#add-feed img {
-  display: flex;
-  flex-wrap: wrap;
-  width: 35px;
-  border-radius: 50%;
-  padding: 10px 10px 10px 10px;
-}
-
-#add-feed input {
-  display: flex;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  width: 620px;
-  padding: 10px 10px 10px 10px;
-}
-
-#add-feed-container #publish-button-container {
-  display: flex;
-  justify-content: end;
-  margin-bottom: 1.5em;
-}
-
-#add-feed-container #publish-button-container button {
-  margin-right: 4em;
-  height: 30px;
-  border-radius: 20px;
-  background-color: rgb(74, 74, 133);
-  color: white;
-}
-
-#add-feed-container #publish-button-container button:hover {
-  cursor: pointer;
-  opacity: 0.9;
-  background-color: rgb(49, 49, 108);
-  font-weight: bold;
-}
-
-#popup-add-feed {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  padding: 50px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 30);
-  background: #fff;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.5s;
-}
-
-#popup-add-feed.active {
-  visibility: visible;
-  opacity: 1;
-  transition: 0.5s;
-  z-index: 1000;
-}
 
 /* Profile styling */
 
 #profile {
-  margin: 2em;
+  margin-top: 5em;
   display: flex;
   flex-wrap: wrap;
 }
@@ -539,6 +315,10 @@ table tbody tr td {
   margin: 0;
   padding: 0;
   width: 150px;
+}
+
+#update-activity-form {
+  margin-top: 5em;
 }
 
 /* Spinner loading styling */
@@ -567,7 +347,7 @@ table tbody tr td {
 }
 
 
-@media (max-width: 735px) {
+@media (max-width: 800px) {
   header .navbar {
     position: absolute;
     top: 100%; left: 0; right: 0;
@@ -577,7 +357,7 @@ table tbody tr td {
   }
   
   .hamburger-menu {
-    display: initial;
+    display: block;
   }
   
   header .navbar ul {
@@ -588,5 +368,28 @@ table tbody tr td {
   header .navbar.active {
     display: block;
   }
+  
+  .myhome-page {
+    margin-top: 8em;
+  }
+
+   /* login-singup page */
+
+  .login-signup-div form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-signup-div form input {
+    margin: 10px auto;
+  }
+
+  div.feed-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis: 500px;
+  }
+
   
 }
