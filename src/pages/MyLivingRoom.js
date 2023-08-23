@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -10,43 +11,62 @@ function MyLivingRoom() {
   const storedToken = localStorage.getItem("authToken");
   const [filterRoom, setFilterRoom] = useState([]);
   const [roomOwnerId, setRoomOwnerId] = useState("");
-  
+  const [partners, setPartners] = useState([])
+
   useEffect(() => {
-    const fetchRooms = () => {
-      axios.get(`${API_URL}/api/rooms`, {headers: {Authorization: `Bearer ${storedToken}`}})
-        .then(response => {
-          setRoomOwnerId(response.data.map(element => element.roomOwner._id));
-          setFilterRoom(response.data.filter(element => element.partners.length > 0))
-        })
-        .catch(e => console.log("failed to fetch the rooms" ,e));
-    };
+    if (user) {
+      const fetchRooms = () => {
+        axios.get(`${API_URL}/api/rooms`, {headers: {Authorization: `Bearer ${storedToken}`}})
+          .then(response => {
+            const ownedRoomIds = response.data
+            .filter(element => element.roomOwner._id === user._id)
+            .map(element => element._id);
+            setRoomOwnerId(ownedRoomIds);
+            setFilterRoom(response.data.filter(element => element.partners.length > 0));
+            const partnerArray = response.data.flatMap(element => element.partners.map(partner => partner.partner));
+            const checkIfUserIdExistInPartnersArray = partnerArray.includes(user._id)
+            setPartners(checkIfUserIdExistInPartnersArray);
 
-    fetchRooms();
-  }, []);
+          })
+          .catch(e => console.log("failed to fetch the rooms", e));
+      };
 
-  console.log(filterRoom)
-  
-  return(
+      fetchRooms();
+    }
+  }, [user, storedToken]);
+
+  if (!user) {
+    return <div>Loading ...</div>;
+  }
+
+  return (
     <div className="rooms-page">
       <div className="myhome-page-nav">
         <div id="myhome-page-nav-a">
           <Link to="/myhome">Room</Link>
-          <Link to="/living-room">Living Room</Link>    
+          <Link to="/living-room">Living Room</Link>
         </div>
       </div>
-    
+
       <div className="rooms-card">
-        {filterRoom
-          ? filterRoom.map(element => (
-            <div key={element._id}>
-              <RoomsGroupCard key={element.title} {...element}/>
-            </div>
-          )) 
-          : <></>
-        }
+        {filterRoom.map((element) => {
+          const isOwnedRoom = roomOwnerId.includes(element._id);
+          const isPartnerRoom =
+            partners &&
+            element.partners.some((partner) => partner.partner === user._id);
+
+          if (isOwnedRoom || isPartnerRoom) {
+            return (
+              <div key={element._id}>
+                <RoomsGroupCard key={element.title} {...element} />
+              </div>
+            );
+          }
+          return null; // Skip rendering if not owned or a partner
+        })}
       </div>
     </div>
   );
-};
+}
 
 export default MyLivingRoom;
