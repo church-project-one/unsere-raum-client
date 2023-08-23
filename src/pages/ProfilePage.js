@@ -19,7 +19,7 @@ function ProfilePage() {
     fetchProfile();
   }, []);
 
-  console.log(profile)
+  const userId = localStorage.setItem("profileId", profile._id);
   
   return(
     <div id="profile">

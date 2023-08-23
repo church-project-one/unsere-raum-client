@@ -1,14 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function AddPartnerCard({roomId}) {
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem("authToken");
-  const [partner, setPartner] = useState("");
-  const [users, setUser] = useState("");
-  const [myPartner, setMyPartner] = useState("");
+  const [partner, setPartner] = useState();
+   
 
-  const addNewPartnerHandle = (e) => {
+  const handleAddPartner = (e) => {
     e.preventDefault();
 
     const newPartner = {
@@ -16,59 +15,25 @@ function AddPartnerCard({roomId}) {
       roomId
     };
 
-    axios.post(`${API_URL}/api/rooms/${roomId}/partners`, newPartner, {headers: {Authorization: `Bearer ${storedToken}`}})
+    axios.post(`${API_URL}/api/rooms/${roomId}/partners`, newPartner, {headers: {Authorization: `Bearer ${storedToken}`}} )
       .then(response => {
-        console.log(response.data)
-        setPartner("")
-        alert("success to add")
         window.location.reload();
+        setPartner("")
       })
-      .catch(e => {
-        console.log("error to post the new partner", e);
-        alert("failed to add")
-    })
+      .catch(e => console.log("failed to add the new partner"))
   };
-
-  const fetchUsers = () => {
-    axios.get(`${API_URL}/api/users`, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then(response => {
-        const users = response.data.map(element => element._id)
-        setUser(users[1])
-      })
-      .catch(e => console.log("error to fetch the users"))
-  };
-
-  
-  const fetchPartner = () => {
-    axios.get(`${API_URL}/api/partners`, {headers: {Authorization: `Bearer ${storedToken}`}})
-    .then(response => {
-      const partnerId = response.data.map(element => element.partner)
-    
-      setMyPartner(partnerId[0])
-    })
-    .catch(e => console.log("faield to fetch the partners", e))
-  }
-  
-  useEffect(() => {
-    fetchUsers();
-    fetchPartner();
-  }, []);
-
 
   return(
-    <div>
-      <form onSubmit={addNewPartnerHandle}>
-        <label>New Partner</label>
-        <input 
-          type="text"
-          name="partner"
-          value={partner}
-          onChange={e => setPartner(e.target.value)}
-        />
-        <button type="submit">Add</button>
-      </form>
-    </div>
-  )
+    <form onSubmit={handleAddPartner} className="form-add-partner">
+      <input 
+        type="text"
+        name="partner"
+        value={partner}
+        onChange={e => setPartner(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
 };
 
 export default AddPartnerCard;

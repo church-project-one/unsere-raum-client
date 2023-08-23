@@ -27,7 +27,7 @@ function AddRoomCard() {
         setNewTitle("");
         setNewDescription("");
         
-        navigate("/rooms")
+        navigate("/myhome")
       })
       .catch((e) => {
         console.log("failed to create new room", e);

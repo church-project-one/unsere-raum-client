@@ -2,9 +2,8 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import EditRoomCard from "../components/EditRoomCard";
-import AddActivityCard from "../components/AddActivityCard";
-import AddPartnerCard from "../components/AddPartnerCard";
 import { AuthContext } from "../context/auth.context";
+import AddPartnerCard from "../components/AddPartnerCard";
 
 function RoomPageDetails() {
 
@@ -17,8 +16,6 @@ function RoomPageDetails() {
   const [room, setRoom] = useState("");
   const [activities, setActitivities] = useState([]);
   const [displayUpdateForm, setDisplayUpdateForm] = useState("");
-  const [displayAddActivity, setDisplayAddActivity] = useState(false);
-  const [partners, setPartners] = useState([]);
 
 
   const displayUpdateFormHandle = () => {
@@ -40,15 +37,20 @@ function RoomPageDetails() {
 
   const fetchMyPartners = () => {
     axios.get(`${API_URL}/api/partners`, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then(response => setPartners(response.data))
+      .then(response => {})
       .catch(e => console.log("error to fetch the partners", e))
   };
 
   const deleteRoomHandle = () => {
     axios.delete(`${API_URL}/api/rooms/${roomId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then((response) => navigate("/rooms"))
+      .then((response) => navigate("/myhome"))
       .catch(e => console.log("failed to delete", e));
   };
+
+  const toggleAddPartner = () => {
+    const addPartnerFormElement = document.querySelector(".form-add-partner")
+          addPartnerFormElement.classList.toggle("active");
+  }
 
   useEffect(() => {
     fetchTheRoomDetails();
@@ -58,6 +60,8 @@ function RoomPageDetails() {
   return (
     <div className="room-details-container">
       <h1>{room.title}'s Room</h1>
+      <span onClick={toggleAddPartner}>+</span>
+      <AddPartnerCard roomId={roomId}/>
       <table>
         <thead>
           <tr>
@@ -75,7 +79,7 @@ function RoomPageDetails() {
           ))}
         </tbody>
       </table>
-      <button onClick={displayUpdateFormHandle}>Update Class</button>
+      <button onClick={displayUpdateFormHandle}>Update Room</button>
       {displayUpdateForm 
         ? <div className="edit-room-card">
             <EditRoomCard />
@@ -85,22 +89,7 @@ function RoomPageDetails() {
       }
       <button onClick={deleteRoomHandle}>Delete Room</button>
       <div>
-        <table>
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>My Partners</th>
-            </tr>
-          </thead>
-          <tbody>
-          {partners.map((element, index) => (
-          <tr key={element._id}>
-            <td>{index + 1}</td>
-            <td>{element.partner}</td>
-          </tr>
-          ))}
-          </tbody>
-        </table>
+        <h3>My Partners</h3>
       </div>
     </div>
   )

@@ -1,6 +1,5 @@
 import './App.css';
 import {Routes, Route} from "react-router-dom";
-import RoomsPage from './pages/RoomsPage';
 import SignUp from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import NavBar from './components/NavBar';
@@ -10,6 +9,7 @@ import EditActivityCard from './components/EditActivityCard';
 import MyHomePage from './pages/MyHomePage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
+import MyLivingRoom from './pages/MyLivingRoom';
 
 function App() {
   return (
@@ -18,7 +18,6 @@ function App() {
 
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path="/rooms" element={<RoomsPage/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/create-room" element={<AddRoomCard/>}/>
@@ -26,6 +25,7 @@ function App() {
         <Route path="/activities/:activityId" element={<EditActivityCard />} />
         <Route path="/myhome" element={<MyHomePage/>}/>
         <Route path="/profile/:profileId" element={<ProfilePage/>}/>
+        <Route path="/living-room" element={<MyLivingRoom />} />
       </Routes>
       
     </div>
