@@ -58,11 +58,13 @@ function MyLivingRoom() {
           if (isOwnedRoom || isPartnerRoom) {
             return (
               <div key={element._id}>
-                <RoomsGroupCard key={element.title} {...element} />
+                <RoomsGroupCard {...element} />
               </div>
             );
           }
-          return null; // Skip rendering if not owned or a partner
+          return <div key={`message-${element._id}`}>
+          <h3>You haven't join the room</h3>
+          </div>;
         })}
       </div>
     </div>

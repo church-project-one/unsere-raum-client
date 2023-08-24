@@ -1,9 +1,7 @@
 function HomePage() {
   return(
     <div id="home-page">
-      <div>
-        Hi from HomePage
-      </div>
+      <h2>Feel free to make your own to do list</h2>
     </div>
   );
 };

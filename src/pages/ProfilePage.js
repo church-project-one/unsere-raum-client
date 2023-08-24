@@ -19,8 +19,6 @@ function ProfilePage() {
     fetchProfile();
   }, []);
 
-  const userId = localStorage.setItem("profileId", profile._id);
-  
   return(
     <div id="profile">
       <div>
@@ -31,6 +29,10 @@ function ProfilePage() {
           <tr>
             <td>Name:</td>
             <td>{profile.name}</td>
+          </tr>
+          <tr>
+            <td>Id:</td>
+            <td>{profile._id}</td>
           </tr>
           <tr>
             <td>Nationality:</td>
