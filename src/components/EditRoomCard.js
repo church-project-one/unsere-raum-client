@@ -1,12 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function EditRoomCard() {
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem("authToken");
   const {roomId} = useParams();
-  const navigate = useNavigate()
 
   const[title, setUpdateTitle] = useState("");
 

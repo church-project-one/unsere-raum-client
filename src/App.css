@@ -345,6 +345,15 @@ table tbody tr td {
   width: 150px;
 }
 
+/* Styling for edit profile user */
+
+#form-edit-profile {
+  margin-top: 3.5em;
+}
+
+
+/* Styling for acctivity and add partner */
+
 #update-activity-form {
   margin-top: 5em;
 }

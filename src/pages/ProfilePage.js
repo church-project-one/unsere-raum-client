@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function ProfilePage() {
   const API_URL = "http://localhost:5005";
@@ -60,6 +60,8 @@ function ProfilePage() {
           </tr>
         </tbody>
       </table>
+      <Link to={`/edit-profile/${profileId}`}>Manage Account</Link>
+
     </div>
   );
 };

@@ -10,6 +10,7 @@ import MyHomePage from './pages/MyHomePage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
 import MyLivingRoom from './pages/MyLivingRoom';
+import EditProfileCard from './components/EditProfileCard';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/activities/:activityId" element={<EditActivityCard />} />
         <Route path="/myhome" element={<MyHomePage/>}/>
         <Route path="/profile/:profileId" element={<ProfilePage/>}/>
+        <Route path="/edit-profile/:profileId" element={<EditProfileCard/>} />
         <Route path="/living-room" element={<MyLivingRoom />} />
       </Routes>
       

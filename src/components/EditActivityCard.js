@@ -16,7 +16,6 @@ function EditActivityCard() {
   const fetchOneActivity = () => {
     axios.get(`${API_URL}/api/activities/${activityId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
-        console.log(response.data)
         setDate(response.data)
         setActivity(response.data.activity);
       })
