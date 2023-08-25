@@ -519,13 +519,14 @@ table tbody tr td {
   
   .myhome-page-nav #myhome-page-nav-a {
     position: fixed;
-    top: 7%;
+    top: 8%;
     width: 100%;
     z-index: 500;
     background-color: white;
     text-align: center;
     color: black;
     font-weight: bold;
+    color: rgb(52, 44, 44)
   }
 
    /* login-singup page styling */
