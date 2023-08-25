@@ -35,7 +35,7 @@ function MyHomePage () {
     }, [])
   
     if(!user) {
-      return <p>Loading...</p>
+      return <p className="loading-myhomepage">Loading...</p>
     } else {
       const userRooms = rooms.filter(room => room.roomOwner._id === user._id)
       return(
