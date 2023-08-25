@@ -22,7 +22,7 @@ function ProfilePage() {
   return(
     <div id="profile">
       <div>
-        <img src={profile.picture} alt="img"/>
+        {profile.picture ? <img src={profile.picture} alt="img"/> : <>No Profile Picture</>}
       </div>
       <table>
         <tbody>
