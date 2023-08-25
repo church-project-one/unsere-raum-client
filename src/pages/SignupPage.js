@@ -10,15 +10,29 @@ function SignUp() {
   const[name, setName] = useState("");
   const[email, setEmail] = useState("");
   const[password, setPassword] = useState("");
+  const[street, setStreet] = useState("");
+  const[number, setNumber] = useState("");
+  const[postalCode, setPostalCode] = useState("");
+  const[city, setCity] = useState("");
+  const[nationality, setNationality] = useState("");
+  const[picture, setPicture] = useState("");
+
   const[errorMessage, setErrorMessage] = useState(undefined);
 
   const handleName = (e) => setName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+  const handleStreet = (e) => setStreet(e.target.value);
+  const handleNumber = (e) => setNumber(e.target.value);
+  const handlePostalCode = (e) => setPostalCode(e.target.value);
+  const handleCity = (e) => setCity(e.target.value);
+  const handleNationality = (e) => setNationality(e.target.value);
+  const handlePicture = (e) => setPicture(e.target.value);
+
 
   const signUpSubmit = (e) => {
     e.preventDefault();
-    const requestSignUpBody = {name, email, password};
+    const requestSignUpBody = {name, email, password, street, number, postalCode, city, nationality, picture};
 
     axios.post(`${API_URL}/auth/signup`, requestSignUpBody)
       .then(response => {navigate("/login")})
@@ -55,6 +69,56 @@ function SignUp() {
           value={password}
           onChange={handlePassword}
         />
+
+        <label>Street:</label>
+        <input 
+          type="text"
+          name="street"
+          value={street}
+          onChange={handleStreet}
+        />
+
+        <label>Number:</label>
+        <input 
+          type="number"
+          name="number"
+          value={number}
+          onChange={handleNumber}
+        />
+
+        <label>Postal Code:</label>
+        <input 
+          type="text"
+          name="postalCode"
+          value={postalCode}
+          onChange={handlePostalCode}
+        />
+
+        <label>City:</label>
+        <input 
+          type="text"
+          name="city"
+          value={city}
+          onChange={handleCity}
+        />
+
+        <label>Nationality:</label>
+        <input 
+          type="text"
+          name="nationality"
+          value={nationality}
+          onChange={handleNationality}
+        />
+
+        <label>Picture:</label>
+        <input 
+          type="file"
+          name="picture"
+          value={picture}
+          onChange={handlePicture}
+        />
+
+
         <button type="submit">Sign Up</button>
       </form>
 
