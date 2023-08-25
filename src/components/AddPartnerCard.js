@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-function AddPartnerCard({roomId}) {
+function AddPartnerCard() {
   const API_URL = process.env.REACT_APP_SERVER_URL;
   const storedToken = localStorage.getItem("authToken");
   const [partner, setPartner] = useState();
-   
+
+  const {roomId} = useParams();
 
   const handleAddPartner = (e) => {
     e.preventDefault();
@@ -23,8 +25,10 @@ function AddPartnerCard({roomId}) {
       .catch(e => console.log("failed to add the new partner"))
   };
 
+  console.log(roomId)
   return(
     <form onSubmit={handleAddPartner} className="form-add-partner">
+      <label><h3>Partner's Id</h3></label>
       <input 
         type="text"
         name="partner"

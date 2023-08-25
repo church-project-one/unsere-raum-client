@@ -11,6 +11,7 @@ import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
 import MyLivingRoom from './pages/MyLivingRoom';
 import EditProfileCard from './components/EditProfileCard';
+import AddPartnerCard from './components/AddPartnerCard';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/profile/:profileId" element={<ProfilePage/>}/>
         <Route path="/edit-profile/:profileId" element={<EditProfileCard/>} />
         <Route path="/living-room" element={<MyLivingRoom />} />
+        <Route path="/add-partner/:roomId" element={<AddPartnerCard />} />
       </Routes>
       
     </div>

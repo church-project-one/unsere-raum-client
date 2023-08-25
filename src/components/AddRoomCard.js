@@ -36,7 +36,7 @@ function AddRoomCard() {
   return (
     <div>
       <form onSubmit={handleSubmitCreateNewRoom} className="new-room">
-        <label><h1>Title</h1></label>
+        <label><h3>Title</h3></label>
         <input 
           type="text"
           name="title"

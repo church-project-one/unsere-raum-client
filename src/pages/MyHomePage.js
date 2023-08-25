@@ -53,7 +53,7 @@ function MyHomePage () {
                 <RoomsCard key={room._id} {...room} activities={room.activities}/>
               </div>
             ))}
-            <Link to="/create-room">+ New Room</Link>
+            <Link to="/create-room" className="new-room-link">+ New Room</Link>
           </div>
         </div>
       );

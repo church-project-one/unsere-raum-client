@@ -59,7 +59,7 @@ function RoomPageDetails() {
     <div className="room-details-container">
       <h1>{room.title}'s Room</h1>
       <span onClick={toggleAddPartner}>+</span>
-      <AddPartnerCard roomId={roomId}/>
+      
       <table>
         <thead>
           <tr>
@@ -86,6 +86,7 @@ function RoomPageDetails() {
         : <></>
       }
       <button onClick={deleteRoomHandle}>Delete Room</button>
+      <Link to={`/add-partner/${roomId}`} className="add-partner-link">Add Partner +</Link>
       <div>
         <h3>My Partners</h3>
       </div>

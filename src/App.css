@@ -66,6 +66,7 @@ div.hamburger-menu .hamburger-icon {
 /* Room Card styling */
 .rooms-page {
   margin-top: 4em;
+  margin-left: 120px;
 }
 
 .rooms-card {
@@ -78,13 +79,19 @@ div.hamburger-menu .hamburger-icon {
   margin-top: 3.5em;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 .sub-rooms-card {
   margin-left: 20px;
   margin-right: 20px;
+  padding-top: 10px;
 }
 
 .sub-rooms-card a {
   color: black;
+  font-weight: bold;
 }
 
 .sub-rooms-card a:hover {
@@ -111,6 +118,12 @@ td {
   justify-content: center;
 }
 
+.new-room-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .new-room button {
   border-radius: 10px;
 }
@@ -131,6 +144,16 @@ td {
 .new-room input:hover {
   transition: 0.5s ease-in-out;
   width: 300px;
+}
+
+.add-partner-link {
+  width: 120px;
+  height: 19.2;
+  text-align: center;
+  background-color: blanchedalmond;
+  margin-top: 1em;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .room-details-container {
@@ -349,7 +372,7 @@ td {
 }
 
 table {
-  margin-left: 4em;
+  margin: 0 auto;
 }
 
 table tbody tr td {
@@ -372,11 +395,30 @@ table tbody tr td {
 }
 
 .form-add-partner {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
-.form-add-partner.active {
-  display: block;
+.form-add-partner input {
+  margin-bottom: 1em;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.form-add-partner input:hover {
+  width: 300px;
+  transition: 0.5s ease-in-out;
+}
+
+.form-add-partner button {
+  cursor: pointer;
 }
 
 /* Spinner loading styling */
@@ -432,12 +474,34 @@ table tbody tr td {
   }
   
   /* My Home Page styling */
+
+  .rooms-page {
+    margin-top: 4em;
+    margin-left: 0;
+  }
+
+  .rooms-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 3.5em;
+  }
+
+  .sub-rooms-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .myhome-page-nav {
     margin-top: 4.5em;
     position: static;
     padding-top: 0;
   }
-
   
   .myhome-page-nav #myhome-page-nav-a {
     position: fixed;

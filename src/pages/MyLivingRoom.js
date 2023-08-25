@@ -61,10 +61,11 @@ function MyLivingRoom() {
                 <RoomsGroupCard {...element} />
               </div>
             );
+          } else {
+            <h3>You haven't join the room</h3>
+            return <div key={`message-${element._id}`}>
+            </div>;
           }
-          return <div key={`message-${element._id}`}>
-          <h3>You haven't join the room</h3>
-          </div>;
         })}
       </div>
     </div>

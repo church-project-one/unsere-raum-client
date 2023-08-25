@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import AddActivityCard from "./AddActivityCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function RoomsCard({ title, activities, _id }) {
   const [showAddActivityCard, setShowAddActivityCard] = useState("");
+  const [completedFontWeight, setCompletedFontWeight] = useState(() => {
+    return localStorage.getItem("completedFontWeight") || "normal"
+  });
 
   const displayAddActivityCard = () => {
     setShowAddActivityCard(true);
@@ -11,6 +14,15 @@ function RoomsCard({ title, activities, _id }) {
 
   const hiddenAddActivityCard = () => {
     setShowAddActivityCard(false);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("completedFontWeight", completedFontWeight);
+  }, [completedFontWeight])
+
+  const handleRemarkCompleted = () => {
+    const newFontWeight = completedFontWeight === "normal" ? "bold" : "normal";
+    setCompletedFontWeight(newFontWeight);
   }
 
   return (
@@ -33,7 +45,7 @@ function RoomsCard({ title, activities, _id }) {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{element.activity}</td>
-              <td>Complete</td>
+              <td onClick={handleRemarkCompleted} style={{fontWeight: completedFontWeight, cursor: "pointer"}} id="remark-completed">Completed</td>
             </tr>
           ))}
         </tbody>
@@ -45,7 +57,7 @@ function RoomsCard({ title, activities, _id }) {
           </div> 
         : <></>
       }
-      <Link to={`/rooms/${_id}`}>Details</Link>
+      <Link to={`/rooms/${_id}`} className="details-font">Details</Link>
     </div>
   );
 }
