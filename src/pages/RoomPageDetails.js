@@ -1,8 +1,7 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import EditRoomCard from "../components/EditRoomCard";
-import { AuthContext } from "../context/auth.context";
 import AddPartnerCard from "../components/AddPartnerCard";
 
 function RoomPageDetails() {
