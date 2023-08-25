@@ -62,9 +62,11 @@ function MyLivingRoom() {
               </div>
             );
           } else {
-            <h3>You haven't join the room</h3>
-            return <div key={`message-${element._id}`}>
-            </div>;
+            return (
+              <div key={`message-${element._id}`}>
+                <h3 className="message-in-living-room">You haven't join the room</h3>
+              </div>
+            )
           }
         })}
       </div>

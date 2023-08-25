@@ -63,7 +63,7 @@ div.hamburger-menu .hamburger-icon {
 }
 
 
-/* Room Card styling */
+/* Rooms Card styling */
 .rooms-page {
   margin-top: 4em;
   margin-left: 120px;
@@ -107,6 +107,13 @@ div.hamburger-menu .hamburger-icon {
 td {
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.message-in-living-room {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
 .new-room {
