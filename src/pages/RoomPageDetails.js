@@ -11,7 +11,6 @@ function RoomPageDetails() {
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
   const {roomId} = useParams();
-  const {user} = useContext(AuthContext)
 
   const [room, setRoom] = useState("");
   const [activities, setActitivities] = useState([]);
