@@ -35,7 +35,7 @@ function NavBar() {
 
             {isLoggedIn && (
               <>
-              <li><Link to="/myhome">My Home</Link></li>
+                <li><Link to="/myhome">My Home</Link></li>
                 <li><Link to={`/profile/${user._id}`}>Profile</Link></li>
                 <li><Link onClick={logOutUser}>Log Out</Link></li>
               </>

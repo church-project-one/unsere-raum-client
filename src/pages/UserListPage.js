@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 function UserListPage() {
-  const API_URL = "http://localhost:5005";
+  const API_URL = process.env.REACT_APP_SERVER_URL;
   const storedToken = localStorage.getItem("authToken");
 
   const fetchUsers = () => {

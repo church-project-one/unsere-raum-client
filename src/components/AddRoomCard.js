@@ -3,9 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AddRoomCard() {
-  const API_URL = "http://localhost:5005";
+  const API_URL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
-
   const [title, setNewTitle] = useState("");
   const [description, setNewDescription] = useState("");
 

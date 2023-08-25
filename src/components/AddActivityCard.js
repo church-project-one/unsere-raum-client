@@ -2,10 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 
 function AddActivityCard({roomId}) {
-  const API_URL = "http://localhost:5005";
-  
+  const API_URL = process.env.REACT_APP_SERVER_URL;
   const[activity, setActivity] = useState("");
-
   const storedToken = localStorage.getItem("authToken");
 
   const handleSubmitNewActivity = (e) => {

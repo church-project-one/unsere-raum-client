@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function MyHomePage () {
   const {user} = useContext(AuthContext);
 
-  const API_URL = "http://localhost:5005";
+  const API_URL = process.env.REACT_APP_SERVER_URL;
   const[rooms, setRooms] = useState([]);
   const [arrPartners, setArrPartners] = useState([])
   const [partners, setPartners] = useState([]);

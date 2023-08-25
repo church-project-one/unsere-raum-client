@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 function ProfilePage() {
-  const API_URL = "http://localhost:5005";
+  const API_URL = process.env.REACT_APP_SERVER_URL;
   const [profile, setProfile] = useState([]);
   const {profileId} = useParams("")
 
@@ -60,7 +60,7 @@ function ProfilePage() {
           </tr>
         </tbody>
       </table>
-      <Link to={`/edit-profile/${profileId}`}>Manage Account</Link>
+      <Link to={`/edit-profile/${profileId}`} className="manage-account">Manage Account</Link>
 
     </div>
   );

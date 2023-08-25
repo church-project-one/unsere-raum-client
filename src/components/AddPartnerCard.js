@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 function AddPartnerCard({roomId}) {
-  const API_URL = "http://localhost:5005";
+  const API_URL = process.env.REACT_APP_SERVER_URL;
   const storedToken = localStorage.getItem("authToken");
   const [partner, setPartner] = useState();
    

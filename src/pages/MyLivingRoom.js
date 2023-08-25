@@ -7,7 +7,7 @@ import { AuthContext } from "../context/auth.context";
 
 function MyLivingRoom() {
   const { user } = useContext(AuthContext);
-  const API_URL = "http://localhost:5005";
+  const API_URL = process.env.REACT_APP_SERVER_URL;
   const storedToken = localStorage.getItem("authToken");
   const [filterRoom, setFilterRoom] = useState([]);
   const [roomOwnerId, setRoomOwnerId] = useState("");

@@ -3,7 +3,6 @@ import AddActivityCard from "./AddActivityCard";
 import { useState } from "react";
 
 function RoomsGroupCard ({title, activities, _id}) {
-
   const [showAddActivityCard, setShowAddActivityCard] = useState("");
 
   const displayAddActivityCard = () => {
