@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import EditRoomCard from "../components/EditRoomCard";
-import AddPartnerCard from "../components/AddPartnerCard";
 
 function RoomPageDetails() {
 
@@ -14,6 +13,7 @@ function RoomPageDetails() {
   const [room, setRoom] = useState("");
   const [activities, setActitivities] = useState([]);
   const [displayUpdateForm, setDisplayUpdateForm] = useState("");
+  const [partners, setPartners] = useState([]);
 
 
   const displayUpdateFormHandle = () => {
@@ -35,7 +35,10 @@ function RoomPageDetails() {
 
   const fetchMyPartners = () => {
     axios.get(`${API_URL}/api/partners`, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then(response => {})
+      .then(response => {
+        setPartners(response.data)
+        console.log(response.data.map(element => element.partner.name))
+      })
       .catch(e => console.log("error to fetch the partners", e))
   };
 
@@ -87,8 +90,18 @@ function RoomPageDetails() {
       }
       <button onClick={deleteRoomHandle}>Delete Room</button>
       <Link to={`/add-partner/${roomId}`} className="add-partner-link">Add Partner +</Link>
-      <div>
-        <h3>My Partners</h3>
+      <div id="partners-list">
+        <h3 className="my-partners-title">My Partners: </h3>
+        <table>
+          <tbody>
+          {partners.map((element, index) => (
+            <tr key={index}>
+              <td>{index + 1 + "."}</td>
+              <td>{element.partner.name}</td>
+            </tr>
+          ))} 
+          </tbody>
+        </table>
       </div>
     </div>
   )

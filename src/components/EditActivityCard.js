@@ -47,11 +47,11 @@ function EditActivityCard() {
 
   return(
     <div id="update-activity-form">
-        <form onSubmit={updateActivityHandle}>
-        <label>Created At</label>
+      <form onSubmit={updateActivityHandle}>
+        <label>Created At:</label>
         <p>{new Date(date.createdAt).toDateString("en", {day: "2-digit", month: "long", year: "numeric"})}</p>
 
-        <label>Activity</label>
+        <label>Activity:</label>
         <input 
           type="text"
           name="activity"

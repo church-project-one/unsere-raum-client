@@ -35,7 +35,7 @@ function MyHomePage () {
     }, [])
   
     if(!user) {
-      return <p className="loading-myhomepage">Loading...</p>
+      return <p className="loading-message">Loading...</p>
     } else {
       const userRooms = rooms.filter(room => room.roomOwner._id === user._id)
       return(
@@ -44,6 +44,7 @@ function MyHomePage () {
             <div id="myhome-page-nav-a">
               <Link to="/myhome">Room</Link>
               <Link to="/living-room">Living Room</Link>
+              <Link to="/create-room" className="new-room-link">+ New Room</Link>
             </div>
           </div>
 
@@ -53,7 +54,6 @@ function MyHomePage () {
                 <RoomsCard key={room._id} {...room} activities={room.activities}/>
               </div>
             ))}
-            <Link to="/create-room" className="new-room-link">+ New Room</Link>
           </div>
         </div>
       );

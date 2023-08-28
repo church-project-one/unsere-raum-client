@@ -7,7 +7,7 @@ header {
   position: fixed;
   top: 0; left: 0; right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: end;
   align-items: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -15,6 +15,7 @@ header {
 }
 
 a, li {
+  font-weight: bold;
   text-decoration: none;
   list-style: none;
 }
@@ -84,9 +85,9 @@ div.hamburger-menu .hamburger-icon {
 }
 
 .sub-rooms-card {
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-top: 10px;
+  margin: 20px;
+  padding: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .sub-rooms-card a {
@@ -123,12 +124,6 @@ td {
   align-items: center;
   height: 100vh;
   justify-content: center;
-}
-
-.new-room-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .new-room button {
@@ -176,6 +171,23 @@ td {
   margin-top: 10px;
 }
 
+#partners-list {
+  margin-top: 1em;
+}
+
+.my-partners-title {
+  text-align: center;
+}
+
+#partners-list table {
+  width: 0;
+}
+
+#partners-list table tbody tr td {
+  padding-left: 0;
+  padding-right: 5px;
+}
+
 .form-edit-room-container form {
   display: flex;
   flex-wrap: wrap;
@@ -206,12 +218,20 @@ td {
 
 /* HomePage */
 #home-page {
-  margin-top: 5em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
-#home-page h2 {
-  text-align: center;
+#home-page a {
+  margin: 0.5em;
+  color: black;
+  font-weight: bold;
 }
+
 
 /* Myhome Page styling */
 .myhome-page-nav {
@@ -350,10 +370,7 @@ td {
   margin-top: 5em;
   display: flex;
   flex-wrap: wrap;
-}
-
-#profile div {
-  margin-left: 2em;
+  flex-direction: column;
 }
 
 .manage-account {
@@ -374,17 +391,19 @@ td {
 }
 
 #profile img {
-  width: 500px;
+  width: 300px;
   border-radius: 50%;
+  display: flex;
+  margin: 0 auto;
 }
 
-table {
-  margin: 0 auto;
+#profile table {
+  margin: 2.5em auto;
 }
 
 table tbody tr td {
   margin: 0;
-  padding: 0;
+  padding: 5px;
   width: 150px;
 }
 
@@ -398,7 +417,35 @@ table tbody tr td {
 /* Styling for acctivity and add partner */
 
 #update-activity-form {
-  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+#update-activity-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+#update-activity-form form input {
+  text-align: center;
+  margin: 0.5em 0;
+  padding: 5px;
+}
+
+#update-activity-form form button, #update-activity-form button {
+  width: 100px;
+  padding: 3px;
+  margin: 0 auto;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#update-activity-form button {
+  margin: 0.5em 0;
 }
 
 .form-add-partner {
@@ -473,6 +520,7 @@ table tbody tr td {
   }
   
   .hamburger-menu {
+    margin: 0 auto;
     display: block;
   }
   
@@ -509,14 +557,8 @@ table tbody tr td {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 1em;
-  }
-
-  .loading-myhomepage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin-top: 2.5em;
+    margin-bottom: 0;
   }
 
   .myhome-page-nav {

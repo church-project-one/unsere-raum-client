@@ -15,7 +15,9 @@ function NavBar() {
 
   return(
       <header>
+      {!isLoggedIn && (
         <Link to="/">ZendDae</Link>
+      )}
 
         <div className="hamburger-menu" onClick={toggleHamburgerMenu}>
           <span className="hamburger-icon top-line"></span>

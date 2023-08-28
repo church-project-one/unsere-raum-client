@@ -36,7 +36,7 @@ function MyLivingRoom() {
   }, [user, storedToken]);
 
   if (!user) {
-    return <div>Loading ...</div>;
+    return <p className="loading-message">Loading...</p>
   }
 
   return (

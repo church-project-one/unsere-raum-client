@@ -24,7 +24,7 @@ function ProfilePage() {
       <div>
         {profile.picture ? <img src={profile.picture} alt="img"/> : <>No Profile Picture</>}
       </div>
-      <table>
+      <table id="profile-table">
         <tbody>
           <tr>
             <td>Name:</td>
