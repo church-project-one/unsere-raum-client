@@ -15,7 +15,6 @@ function RoomPageDetails() {
   const [displayUpdateForm, setDisplayUpdateForm] = useState("");
   const [partners, setPartners] = useState([]);
 
-
   const displayUpdateFormHandle = () => {
     setDisplayUpdateForm(true);
   }
@@ -33,25 +32,26 @@ function RoomPageDetails() {
       .catch(e => console.log("failed to fetch the room details", e))
   };
 
+  
+  const deleteRoomHandle = () => {
+    axios.delete(`${API_URL}/api/rooms/${roomId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
+    .then((response) => navigate("/myhome"))
+    .catch(e => console.log("failed to delete", e));
+  };
+  
+  const toggleAddPartner = () => {
+    const addPartnerFormElement = document.querySelector(".form-add-partner")
+    addPartnerFormElement.classList.toggle("active");
+  }
+  
   const fetchMyPartners = () => {
     axios.get(`${API_URL}/api/partners`, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then(response => {
         setPartners(response.data)
-        console.log(response.data.map(element => element.partner.name))
       })
       .catch(e => console.log("error to fetch the partners", e))
   };
 
-  const deleteRoomHandle = () => {
-    axios.delete(`${API_URL}/api/rooms/${roomId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then((response) => navigate("/myhome"))
-      .catch(e => console.log("failed to delete", e));
-  };
-
-  const toggleAddPartner = () => {
-    const addPartnerFormElement = document.querySelector(".form-add-partner")
-          addPartnerFormElement.classList.toggle("active");
-  }
 
   useEffect(() => {
     fetchTheRoomDetails();
@@ -98,6 +98,10 @@ function RoomPageDetails() {
             <tr key={index}>
               <td>{index + 1 + "."}</td>
               <td>{element.partner.name}</td>
+              {console.log(element._id)}
+              <td>
+                <Link to={`/partners/${element._id}`}>Details</Link>
+              </td>
             </tr>
           ))} 
           </tbody>

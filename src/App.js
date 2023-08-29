@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage';
 import MyLivingRoom from './pages/MyLivingRoom';
 import EditProfileCard from './components/EditProfileCard';
 import AddPartnerCard from './components/AddPartnerCard';
+import PartnerPageDetails from './pages/PartnerPageDetails';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/edit-profile/:profileId" element={<EditProfileCard/>} />
         <Route path="/living-room" element={<MyLivingRoom />} />
         <Route path="/add-partner/:roomId" element={<AddPartnerCard />} />
+        <Route path="/partners/:partnerId" element={<PartnerPageDetails />} />
       </Routes>
       
     </div>

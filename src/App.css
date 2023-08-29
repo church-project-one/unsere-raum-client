@@ -475,6 +475,24 @@ table tbody tr td {
   cursor: pointer;
 }
 
+/* Partner Id */
+
+#partner-id {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#partner-id input {
+  width: 200px;
+  height: 25px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 1em 0;
+}
+
 /* Spinner loading styling */
 
 .loader {
