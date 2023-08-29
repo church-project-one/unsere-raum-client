@@ -218,6 +218,7 @@ td {
 
 /* HomePage */
 #home-page {
+  margin-top: 4.5em;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -230,6 +231,12 @@ td {
   margin: 0.5em;
   color: black;
   font-weight: bold;
+}
+
+#home-page .images {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 
@@ -551,6 +558,14 @@ table tbody tr td {
   header .navbar.active {
     display: block;
   }
+
+  /* home page styling */
+
+  #home-page .images img {
+    width: 300px;
+    margin: 0 auto;
+  }
+
   
   /* My Home Page styling */
 
