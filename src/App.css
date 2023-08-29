@@ -215,6 +215,10 @@ div.room-details-container table tbody tr {
   height: 100vh;
 }
 
+#home-page p.description {
+  font-size: 20px;
+}
+
 #home-page a {
   margin: 0.5em;
   color: black;
@@ -574,6 +578,10 @@ table tbody tr td {
 
   #home-page {
     margin-top: 4px;
+  }
+
+  #home-page p.description {
+    font-size: 16px;
   }
 
   #home-page .images img {

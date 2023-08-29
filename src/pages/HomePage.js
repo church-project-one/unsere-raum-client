@@ -5,9 +5,10 @@ import roomDetails from "../images/roomDetails.png";
 function HomePage() {
   return(
     <div id="home-page">
-      <p>This is a website application to help people make their own room,<br></br>
+      <p className="description">This is a website application to help people make their own room,<br></br>
           and inside the room they can
           add activities according to its needs.
+      </p>
       <br></br>
       <br></br>
       <div className="images">
@@ -17,8 +18,6 @@ function HomePage() {
         <br></br>
         <img src={roomDetails} alt="room-icon-img"/>
       </div>
-
-      </p>
       <p>Please, sign up if you don't have an account or login if you do!</p>
       
       <Link to="/signup">Sign Up!</Link> <p> or </p>
