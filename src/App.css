@@ -6,6 +6,7 @@
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
+  background-color: rgb(250, 248, 248);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -167,25 +168,12 @@ td {
   margin-top: 4em;
 }
 
-.room-details-container button {
-  margin-top: 10px;
-}
-
-#partners-list {
-  margin-top: 1em;
-}
-
-.my-partners-title {
+div.room-details-container table tbody tr {
   text-align: center;
 }
 
-#partners-list table {
-  width: 0;
-}
-
-#partners-list table tbody tr td {
-  padding-left: 0;
-  padding-right: 5px;
+.room-details-container button {
+  margin-top: 10px;
 }
 
 .form-edit-room-container form {
@@ -218,7 +206,7 @@ td {
 
 /* HomePage */
 #home-page {
-  margin-top: 4.5em;
+  margin-top: 6.5em;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -500,6 +488,30 @@ table tbody tr td {
   margin: 1em 0;
 }
 
+/* Partners List styling */
+
+#partners-list {
+  margin-top: 1em;
+}
+
+.my-partners-title {
+  text-align: center;
+}
+
+#partners-list table {
+  width: 0;
+}
+
+#partners-list table tbody tr{
+  text-align: center;
+}
+
+#partners-list table tbody tr td {
+  padding-left: 0;
+  padding-right: 5px;
+}
+
+
 /* Spinner loading styling */
 
 .loader {
@@ -531,7 +543,6 @@ table tbody tr td {
   header {
     position: fixed;
     z-index: 1100;
-    background-color: rgb(250, 248, 248);
     height: 51px;
   }
 
@@ -560,6 +571,10 @@ table tbody tr td {
   }
 
   /* home page styling */
+
+  #home-page {
+    margin-top: 4px;
+  }
 
   #home-page .images img {
     width: 300px;

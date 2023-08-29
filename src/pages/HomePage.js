@@ -11,7 +11,10 @@ function HomePage() {
       <br></br>
       <br></br>
       <div className="images">
+
         <img src={roomIcon} alt="room-icon-img"/>
+        <br></br>
+        <br></br>
         <img src={roomDetails} alt="room-icon-img"/>
       </div>
 

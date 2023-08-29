@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function AddPartnerCard() {
   const API_URL = process.env.REACT_APP_SERVER_URL;
   const storedToken = localStorage.getItem("authToken");
   const [partner, setPartner] = useState();
-
   const {roomId} = useParams();
+
+  const navigate = useNavigate();
 
   const handleAddPartner = (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ function AddPartnerCard() {
 
     axios.post(`${API_URL}/api/rooms/${roomId}/partners`, newPartner, {headers: {Authorization: `Bearer ${storedToken}`}} )
       .then(response => {
-        window.location.reload();
+        navigate(-1)
         setPartner("")
       })
       .catch(e => console.log("failed to add the new partner"))
