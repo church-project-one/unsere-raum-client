@@ -20,8 +20,9 @@ function AddPartnerCard() {
 
     axios.post(`${API_URL}/api/rooms/${roomId}/partners`, newPartner, {headers: {Authorization: `Bearer ${storedToken}`}} )
       .then(response => {
-        navigate(-1)
         setPartner("")
+        navigate(-1)
+        alert("succes to add new member")
       })
       .catch(e => console.log("failed to add the new partner"))
   };

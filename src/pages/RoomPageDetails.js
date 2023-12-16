@@ -42,7 +42,7 @@ function RoomPageDetails() {
   const toggleAddPartner = () => {
     const addPartnerFormElement = document.querySelector(".form-add-partner")
     addPartnerFormElement.classList.toggle("active");
-  }
+  };
   
   const fetchMyPartners = () => {
     axios.get(`${API_URL}/api/partners`, {headers: {Authorization: `Bearer ${storedToken}`}})
