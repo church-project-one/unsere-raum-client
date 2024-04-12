@@ -338,10 +338,17 @@ div.room-details-container table tbody tr {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin-top: 2em;
+}
+
+.login-signup-div form {
+  display: flex;
+  flex-direction: column;
+
 }
 
 .login-signup-div form input {
-  margin: 10px;
+  margin: 10px 0;
 }
 
 .login-signup-div form button {
