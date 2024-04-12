@@ -15,8 +15,7 @@ function SignUp() {
   const[postalCode, setPostalCode] = useState("");
   const[city, setCity] = useState("");
   const[nationality, setNationality] = useState("");
-  const[picture, setPicture] = useState("");
-
+  const[picture, setPicture] = useState(null);
   const[errorMessage, setErrorMessage] = useState(undefined);
 
   const handleName = (e) => setName(e.target.value);
@@ -27,14 +26,26 @@ function SignUp() {
   const handlePostalCode = (e) => setPostalCode(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
   const handleNationality = (e) => setNationality(e.target.value);
-  const handlePicture = (e) => setPicture(e.target.value);
-
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    setPicture(file);
+  };
 
   const signUpSubmit = (e) => {
     e.preventDefault();
-    const requestSignUpBody = {name, email, password, street, number, postalCode, city, nationality, picture};
+    
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("street", street);
+    formData.append("number", number);
+    formData.append("postalCode", postalCode);
+    formData.append("city", city);
+    formData.append("nationality", nationality);
+    formData.append("picture", picture);
 
-    axios.post(`${API_URL}/auth/signup`, requestSignUpBody)
+    axios.post(`${API_URL}/auth/signup`, formData)
       .then(response => {navigate("/login")})
       .catch(e => {
         console.log("failed to sign up", e);
@@ -114,8 +125,8 @@ function SignUp() {
         <input 
           type="file"
           name="picture"
-          value={picture}
-          onChange={handlePicture}
+          accept="image/*"
+          onChange={handleFileUpload}
         />
 
 

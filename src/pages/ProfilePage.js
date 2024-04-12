@@ -19,6 +19,8 @@ function ProfilePage() {
     fetchProfile();
   }, []);
 
+  console.log(profile.picture)
+
   return(
     <div id="profile">
       <div>

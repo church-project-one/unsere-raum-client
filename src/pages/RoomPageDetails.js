@@ -97,7 +97,7 @@ function RoomPageDetails() {
           {partners.map((element, index) => (
             <tr key={index}>
               <td>{index + 1 + "."}</td>
-              <td>{element.partner.name}</td>
+              <td>{element.partner?.name}</td>
               {console.log(element._id)}
               <td>
                 <Link to={`/partners/${element._id}`}>Details</Link>

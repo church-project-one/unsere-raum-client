@@ -247,6 +247,11 @@ div.room-details-container table tbody tr {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+.please-create-your-room {
+  margin-top: 5em;
+  margin-left: -125px;
+}
+
 .myhome-page-nav #myhome-page-nav-a {
   position: absolute;
   top: 40%;
@@ -586,6 +591,12 @@ table tbody tr td {
   #home-page {
     margin-top: 4px;
   }
+
+  .please-create-your-room {
+    margin-top: 10em;
+    margin-left: 0;
+  }
+
 
   #home-page p.description {
     font-size: 16px;

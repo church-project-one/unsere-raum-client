@@ -37,7 +37,7 @@ function MyHomePage () {
     if(!user) {
       return <p className="loading-message">Loading...</p>
     } else {
-      const userRooms = rooms.filter(room => room.roomOwner._id === user._id)
+      const userRooms = rooms.filter(room => room.roomOwner?._id === user?._id)
       return(
         <div className="rooms-page">
          <div className="myhome-page-nav">
@@ -47,13 +47,17 @@ function MyHomePage () {
               <Link to="/create-room" className="new-room-link">+ New Room</Link>
             </div>
           </div>
-
+          
           <div className="rooms-card">
-            {userRooms.map(room => (
+          {userRooms.length > 0 ? (
+            userRooms.map(room => (
               <div key={room._id}>
                 <RoomsCard key={room._id} {...room} activities={room.activities}/>
               </div>
-            ))}
+            ))
+          ) : (
+            <Link to="/create-room" className="please-create-your-room">Please create your room. Click here!</Link>
+          )}
           </div>
         </div>
       );
