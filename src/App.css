@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+button {
+  padding: 4px;
+}
+
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -421,7 +425,20 @@ table tbody tr td {
 /* Styling for edit profile user */
 
 #form-edit-profile {
-  margin-top: 3.5em;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 5em auto;
+}
+
+#form-edit-profile input {
+  width: 200px;
+  height: 20px;
+  margin-bottom: 1em;
+}
+
+#form-edit-profile button {
+  margin: auto;
 }
 
 

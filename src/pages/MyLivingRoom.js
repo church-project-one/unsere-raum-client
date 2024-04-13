@@ -19,7 +19,7 @@ function MyLivingRoom() {
         axios.get(`${API_URL}/api/rooms`, {headers: {Authorization: `Bearer ${storedToken}`}})
           .then(response => {
             const ownedRoomIds = response.data
-            .filter(element => element.roomOwner._id === user._id)
+            .filter(element => element.roomOwner?._id === user?._id)
             .map(element => element._id);
             setRoomOwnerId(ownedRoomIds);
             setFilterRoom(response.data.filter(element => element.partners.length > 0));

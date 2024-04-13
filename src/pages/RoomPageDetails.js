@@ -41,7 +41,7 @@ function RoomPageDetails() {
   
   const toggleAddPartner = () => {
     const addPartnerFormElement = document.querySelector(".form-add-partner")
-    addPartnerFormElement.classList.toggle("active");
+    addPartnerFormElement?.classList.toggle("active");
   };
   
   const fetchMyPartners = () => {
@@ -92,20 +92,21 @@ function RoomPageDetails() {
       <Link to={`/add-partner/${roomId}`} className="add-partner-link">Add Partner +</Link>
       <div id="partners-list">
         <h3 className="my-partners-title">My Partners: </h3>
-        <table>
-          <tbody>
-          {partners.map((element, index) => (
-            <tr key={index}>
-              <td>{index + 1 + "."}</td>
-              <td>{element.partner?.name}</td>
-              {console.log(element._id)}
-              <td>
-                <Link to={`/partners/${element._id}`}>Details</Link>
-              </td>
-            </tr>
-          ))} 
-          </tbody>
-        </table>
+        {partners.length > 0 ? (
+          <table>
+            <tbody>
+              {partners.map((element, index) => (
+                <tr key={index}>
+                  <td>{index + 1}.</td>
+                  <td>{element.partner?.name}</td>
+                  <td><Link to={`/partners/${element._id}`}>Details</Link></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>No partners at this moment.</p>
+        )}
       </div>
     </div>
   )
